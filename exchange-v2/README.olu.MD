@@ -1,3 +1,10 @@
+# Running
+You can run the script for this assignment using 
+
+`npx truffle exec mint-sell-buy.js --network bsc`
+
+You need to have setup the bsc.json file as described in the Minting a token section
+
 # Cloning code
 This is perhaps the easiest process, the rarible github have 71 repositories, but it's not hard to find that the contracts are in protocol-contracts repo.
 

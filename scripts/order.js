@@ -45,4 +45,4 @@ async function sign(order, account, verifyingContract) {
 	return (await EIP712.signTypedData(web3, account, data)).sig;
 }
 
-module.exports = { AssetType, Asset, Order, sign }
+module.exports = { AssetType, Asset, Order, Types, sign }

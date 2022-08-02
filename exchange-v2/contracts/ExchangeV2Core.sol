@@ -93,7 +93,7 @@ abstract contract ExchangeV2Core is Initializable, OwnableUpgradeable, AssetMatc
       * @param orderRight right order
       * @param signatureRight order right signature
       */
-    function validateOrders(LibOrder.Order memory orderLeft, bytes memory signatureLeft, LibOrder.Order memory orderRight, bytes memory signatureRight) internal {
+    function validateOrders(LibOrder.Order memory orderLeft, bytes memory signatureLeft, LibOrder.Order memory orderRight, bytes memory signatureRight) internal view {
         validateFull(orderLeft, signatureLeft);
         validateFull(orderRight, signatureRight);
         if (orderLeft.taker != address(0)) {

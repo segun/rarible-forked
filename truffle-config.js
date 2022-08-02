@@ -12,8 +12,9 @@ try {
 
 function createNetwork(name) {
   try {
-    var json = require(os.homedir() + "/.ethereum/" + name + ".json");
-    var gasPrice = json.gasPrice != null ? json.gasPrice : 2000000000;
+    const json = require(os.homedir() + "/.ethereum/" + name + ".json");
+    const gasPrice = json.gasPrice != null ? json.gasPrice : 2000000000;
+    const gas = json.gasPrice != null ? json.gas : 6000000;
 
     return {
       provider: () => {
@@ -28,8 +29,8 @@ function createNetwork(name) {
 	      }
       },
       from: json.address,
-      gas: 6000000,
-      gasPrice: gasPrice + "000000000",
+      // gas: gas,
+      // gasPrice: gasPrice,
       network_id: json.network_id,
       skipDryRun: true,
       networkCheckTimeout: 500000
@@ -40,9 +41,9 @@ function createNetwork(name) {
 }
 
 function createProvider(address, key, url) {
-  console.log("creating provider for address: " + address);
   var HDWalletProvider = require("@truffle/hdwallet-provider");
-  return new HDWalletProvider(key, url);
+  const provider = new HDWalletProvider(key, url);
+  return provider;
 }
 
 module.exports = {
@@ -58,6 +59,7 @@ module.exports = {
   networks: {
     e2e: createNetwork("e2e"),
     ops: createNetwork("ops"),
+    bsc: createNetwork("bsc"),
     ropsten: createNetwork("ropsten"),
     mainnet: createNetwork("mainnet"),
     rinkeby: createNetwork("rinkeby"),
